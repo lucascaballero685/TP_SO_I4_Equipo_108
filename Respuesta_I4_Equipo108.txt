@@ -1,0 +1,4 @@
+A. En la pagina de la rama TESTING queda azul.
+B. En la pagina de la rama DESARROLLO queda amarillo. 
+C. En la pagina de la rama Master queda azul.
+D. En el Master queda la favicon de BETA porque se sobrescribio en el TESTING. 
