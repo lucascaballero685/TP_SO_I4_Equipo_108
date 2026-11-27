@@ -1,0 +1,33 @@
+E- ¿Algún integrante tuvo problemas al hacer el push?
+
+Sí. El primero Alfa pudo pushear sin problemas. El segundo Beta y
+el tercero Gamma tuvieron el push rechazado, porque la rama remota
+TESTING ya tenía commits que ellos no tenían en su repositorio local.
+
+F- ¿Qué problemas surgieron?
+Al hacer git push, Git rechazó el envío con un mensaje del tipo
+"! [rejected] TESTING -> TESTING (fetch first)" y "failed to push
+some refs"
+
+H- ¿Qué sucede si cada uno utiliza el push -f?
+El push forzado sobrescribe la rama remota con la versión local, sin
+integrar lo que hay en el remoto. Cada push -f pisa al anterior, así
+que en el remoto solo queda el <p> de quien pushee último y se pierden los commits de los otros dos en el remoto
+(siguen solo en sus repositorios locales). Por eso no se debe usar
+push -f en ramas compartidas.
+
+G- Lo ideal seria hacer un git pull (merge). Trae los cambios del remoto y los
+une con los de alfa. Hay que resolver el conflicto en index.html
+dejando los tres <p>, y luego hacer git add, git commit y git push.
+Consecuencia: se conserva todo el historial, pero se crea un
+commit de merge extra.
+
+I- Debe lograr que TESTING tenga los tres <p> (pull, resolver el
+   conflicto y push). Luego pasar esos cambios a DESARROLLO con estos comandos:
+   git checkout DESARROLLO
+   git pull origin DESARROLLO
+   git merge TESTING
+   (resolver los conflictos, dejando los tres <p>)
+   git add .
+   git commit
+   git push origin DESARROLLO
